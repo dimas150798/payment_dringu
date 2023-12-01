@@ -231,7 +231,7 @@ class M_Pelanggan extends CI_Model
             $dataRowExistingCode = $queryExistingCode->row();
             $existingCode = $dataRowExistingCode->existingCode;
         } else {
-            $existingCode = "kng0000"; // Default value jika tidak ada data
+            $existingCode = "drg0000"; // Default value jika tidak ada data
         }
 
         // Mengambil angka dari kode yang diperoleh dari database
@@ -253,7 +253,7 @@ class M_Pelanggan extends CI_Model
 
         $no = sprintf("%'.04d", $dataN);
 
-        $invoice = "kng" . $no;
+        $invoice = "drg" . $no;
         return $invoice;
     }
 
