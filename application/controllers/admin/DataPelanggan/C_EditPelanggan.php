@@ -55,12 +55,12 @@ class C_EditPelanggan extends CI_Controller
         $price_paket            = $GetDataPaket->price;
         $name_paket             = $GetDataPaket->name;
 
-        if ($name_paket == 'Free 20 Mbps') {
-            $profile_paket      = 'HOME 20 B';
-        } elseif ($name_paket == 'Free Up Home 50') {
-            $profile_paket = 'HOME 50 B';
+        if ($name_paket == 'Home 5') {
+            $profile_paket = $name_paket . "x";
+        } elseif ($name_paket == 'Home 10') {
+            $profile_paket = $name_paket . "x";
         } else {
-            $profile_paket      = strtoupper($name_paket) . " B";
+            $profile_paket = $name_paket;
         }
 
         // Menyimpan data pelanggan ke dalam array
