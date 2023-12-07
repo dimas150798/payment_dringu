@@ -119,7 +119,7 @@ class C_EditPelanggan extends CI_Controller
                 "name" => $name_pppoe,
                 "password" => $password_pppoe,
                 "service" => "pppoe",
-                "profile"   => $profile_paket,
+                "profile"   => $name_paket,
                 "comment" => "",
             ]);
             $api->disconnect();

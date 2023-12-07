@@ -185,7 +185,7 @@ class C_TambahPelanggan extends CI_Controller
                         "name"     => $kode_name_pppoe,
                         "password" => $password_pppoe,
                         "service"  => "pppoe",
-                        "profile"  => $profile_paket,
+                        "profile"  => $name_paket,
                         "comment"  => "",
                     ]);
                     $api->disconnect();
