@@ -14,9 +14,9 @@ class MikrotikModel extends CI_Model
         $api->disconnect();
 
         $paket = array(
-            'Home 5' => 1, 'home 5x' => 1, 'home 10' => 2, 'home 10x' => 2,
-            'home 20' => 3, 'home 30' => 5,
-            'home 50' => 6, 'home 100' => 9
+            'Home 5' => 1, 'Home 5x' => 1, 'Home 10' => 2, 'Home 10x' => 2,
+            'Home 20' => 3, 'Home 30' => 5,
+            'Home 50' => 6, 'Home 100' => 9
         );
 
         $getData = $this->db->query("
