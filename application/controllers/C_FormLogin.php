@@ -60,7 +60,7 @@ class C_FormLogin extends CI_Controller
         }
     }
 
-    public function TerminasiAutoKanigaran()
+    public function TerminasiAutoDringu()
     {
         date_default_timezone_set("Asia/Jakarta");
         // Menampilkan tanggal sekarang
@@ -83,10 +83,6 @@ class C_FormLogin extends CI_Controller
 
         $data['bulan'] = $bulan;
         $data['tahun'] = $tahun;
-
-        // $this->load->view('template/header', $data);
-        // $this->load->view('V_TerminasiAuto', $data);
-        // $this->load->view('template/V_FooterTerminasiAuto', $data);
     }
 
     public function GetTerminasiAuto()
@@ -134,7 +130,7 @@ class C_FormLogin extends CI_Controller
         $this->output->set_content_type('application/json')->set_output(json_encode($ouput));
     }
 
-    public function InsertCustomerKanigaran()
+    public function InsertCustomerDringu()
     {
         $this->MikrotikModel->index();
     }
