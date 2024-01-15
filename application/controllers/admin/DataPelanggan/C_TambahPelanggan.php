@@ -51,6 +51,8 @@ class C_TambahPelanggan extends CI_Controller
         $biaya_instalasi = $this->input->post('biaya_instalasi');
         $kode_name = $this->input->post('kode_name');
 
+        $Duplicate_code_client = $this->M_Pelanggan->KodePelangganNew();
+
         $kode_name_pppoe = $kode_name . $name_pppoe;
         $Duplicatekode_name_pppoe = $this->M_Pelanggan->KodeNamePppoe() . $name_pppoe;
 
@@ -58,14 +60,6 @@ class C_TambahPelanggan extends CI_Controller
 
         $price_paket = $GetDataPaket->price;
         $name_paket = $GetDataPaket->name;
-
-        if ($name_paket == 'Home 5') {
-            $profile_paket = $name_paket . "x";
-        } elseif ($name_paket == 'Home 10') {
-            $profile_paket = $name_paket . "x";
-        } else {
-            $profile_paket = $name_paket;
-        }
 
         // Menyimpan data pelanggan ke dalam array
         $dataPelanggan = array(
@@ -87,7 +81,7 @@ class C_TambahPelanggan extends CI_Controller
         );
 
         $dataPelangganDuplicate = array(
-            'code_client'    => $code_client,
+            'code_client'    => $Duplicate_code_client,
             'phone'          => $phone,
             'latitude'       => 0,
             'longitude'      => 0,
@@ -123,7 +117,7 @@ class C_TambahPelanggan extends CI_Controller
             'gross_amount'     => $price_paket,
             'biaya_admin'      => '0',
             'biaya_instalasi'  => $biaya_instalasi,
-            'nama'             => $kode_name_pppoe,
+            'nama'             => $Duplicatekode_name_pppoe,
             'paket'            => $name_paket,
             'nama_admin'       => 'Admin Infly',
             'keterangan'       => 'Registrasi Baru',
@@ -142,9 +136,6 @@ class C_TambahPelanggan extends CI_Controller
 
         // Check duplicate code
         $checkDuplicateCode = $this->M_Pelanggan->CheckDuplicateCode($order_id);
-
-        // Check Kode name PPPOE
-        $checkDuplicateNamePPPOE = $this->M_Pelanggan->cekData($kode_name);
 
         // Rules form validation
         $this->form_validation->set_rules('name', 'Nama Customer', 'required');
@@ -174,7 +165,7 @@ class C_TambahPelanggan extends CI_Controller
 
                 redirect('admin/DataPelanggan/C_TambahPelanggan');
             } else {
-                if ($order_id != $checkDuplicateCode->order_id && $checkDuplicateNamePPPOE == false) {
+                if ($order_id != $checkDuplicateCode->order_id && $kode_name_pppoe != $checkDuplicate->name_pppoe) {
                     $this->M_CRUD->insertData($dataPelanggan, 'client');
                     $this->M_CRUD->insertData($dataPembayaran, 'data_pembayaran');
                     $this->M_CRUD->insertData($dataPembayaran, 'data_pembayaran_history');
