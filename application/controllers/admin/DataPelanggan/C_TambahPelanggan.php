@@ -61,6 +61,16 @@ class C_TambahPelanggan extends CI_Controller
         $price_paket = $GetDataPaket->price;
         $name_paket = $GetDataPaket->name;
 
+        if ($name_paket == 'Free 20 Mbps') {
+            $profile_paket = 'Home 20';
+        } elseif ($name_paket == 'Free Up Home 50') {
+            $profile_paket = 'Home 50';
+        } elseif ('Free 50 Mbps') {
+            $profile_paket = 'Home 50';
+        } else {
+            $profile_paket = $name_paket;
+        }
+
         // Menyimpan data pelanggan ke dalam array
         $dataPelanggan = array(
             'code_client'    => $code_client,
@@ -176,7 +186,7 @@ class C_TambahPelanggan extends CI_Controller
                         "name"     => $kode_name_pppoe,
                         "password" => $password_pppoe,
                         "service"  => "pppoe",
-                        "profile"  => $name_paket,
+                        "profile"  => $profile_paket,
                         "comment"  => "",
                     ]);
                     $api->disconnect();
