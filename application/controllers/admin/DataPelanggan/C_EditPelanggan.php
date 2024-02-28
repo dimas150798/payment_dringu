@@ -62,7 +62,7 @@ class C_EditPelanggan extends CI_Controller
             $profile_paket = 'Home 20';
         } elseif ($name_paket == 'Free Up Home 50') {
             $profile_paket = 'Home 50';
-        } elseif ('Free 50 Mbps') {
+        } elseif ($name_paket == 'Free 50 Mbps') {
             $profile_paket = 'Home 50';
         } else {
             $profile_paket = $name_paket;
