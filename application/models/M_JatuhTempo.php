@@ -30,7 +30,7 @@ class M_JatuhTempo extends CI_Model
 
                 WHERE client.start_date BETWEEN '2020-01-01' AND '$day'
                 AND data_pembayaran.transaction_time IS NULL AND  client.stop_date IS NULL
-                AND paket.name != 'Free 20 Mbps' AND DAY(client.start_date) >= '$tanggal'
+                AND paket.name != 'Free 20 Mbps' AND paket.name != 'Free 50 Mbps' AND DAY(client.start_date) >= '$tanggal'
 
                 GROUP BY client.name_pppoe
                 ORDER BY DAY(client.start_date) ASC");
