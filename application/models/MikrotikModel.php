@@ -191,7 +191,7 @@ class MikrotikModel extends CI_Model
     public function TerminasiAuto($bulan, $tahun, $tanggalAkhir, $tanggal)
     {
         // Terminasi Bulan 2 (Februari)
-        if ($bulan == 02 && $tanggal == 28 or $bulan == 02 && $tanggal == 29) {
+        if ($bulan == 02 && $tanggal == 29) {
             $getData = $this->db->query("SELECT client.id, client.code_client, client.phone, client.name, client.id_paket, 
             client.name_pppoe, client.password_pppoe, client.id_pppoe, client.address, client.email, 
             DAY(client.start_date) as tanggal, client.stop_date, client.id_area, client.description, client.id_sales,
@@ -207,7 +207,7 @@ class MikrotikModel extends CI_Model
     
             WHERE client.start_date BETWEEN '2020-01-01' AND '$tanggalAkhir' AND
             data_pembayaran.transaction_time IS NULL AND client.stop_date IS NULL
-            AND paket.name != 'Free 20 Mbps' AND DAY(client.start_date) >= '$tanggal' AND
+            AND paket.name != 'Free 20 Mbps' AND paket.name != 'Free 50 Mbps' AND DAY(client.start_date) >= '$tanggal' AND
             client.disabled = 'false'
     
             GROUP BY client.name_pppoe
@@ -252,7 +252,7 @@ class MikrotikModel extends CI_Model
     
             WHERE client.start_date BETWEEN '2020-01-01' AND '$tanggalAkhir' AND
             data_pembayaran.transaction_time IS NULL AND client.stop_date IS NULL
-            AND paket.name != 'Free 20 Mbps' AND DAY(client.start_date) = '$tanggal' AND
+            AND paket.name != 'Free 20 Mbps' AND paket.name != 'Free 50 Mbps' AND DAY(client.start_date) = '$tanggal' AND
             client.disabled = 'false'
     
             GROUP BY client.name_pppoe
