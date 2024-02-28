@@ -58,6 +58,16 @@ class C_EditPelanggan extends CI_Controller
         $name_paket             = $GetDataPaket->name;
         $Order_ID               = $Check_Payment->order_id;
 
+        if ($name_paket == 'Free 20 Mbps') {
+            $profile_paket = 'Home 20';
+        } elseif ($name_paket == 'Free Up Home 50') {
+            $profile_paket = 'Home 50';
+        } elseif ('Free 50 Mbps') {
+            $profile_paket = 'Home 50';
+        } else {
+            $profile_paket = $name_paket;
+        }
+
         $updateDataPayment  = array(
             'nama'          => $name_pppoe,
             'paket'         => $name_paket,
@@ -124,7 +134,7 @@ class C_EditPelanggan extends CI_Controller
                 "name" => $name_pppoe,
                 "password" => $password_pppoe,
                 "service" => "pppoe",
-                "profile"   => $name_paket,
+                "profile"   => $profile_paket,
                 "comment" => "",
             ]);
             $api->disconnect();
